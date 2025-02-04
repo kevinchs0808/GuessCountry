@@ -46,9 +46,14 @@ But, one potential reason why this happened is because the data contains more no
 
 ![plot](./my_ray_gnn_bucket/result/label_distribution.jpg)
 
+## Scaling the GNN Training with Ray on EC2
+
+Ray is a tool that can help to parallelize your model training. In this case, the model training can be parallelized based on two types of edges, which are "CONNECTED" and "LIKED".
+
+========= Procedure to Setup Ray Cluster on EC2 and Parallelize GNN on Ray Cluster will be written soon =========
+
 ## Next Step
 
-- Experiment with model training on AWS Sagemaker + Ray Cluster to see the real impact of Parallelization
 - Finetune the layers of the Neural Network Architecture to improve the model performance
 
 ## Citation
