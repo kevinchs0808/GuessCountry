@@ -8,7 +8,7 @@ from model import train_gnn_parallel
 from parameters import Parameters
 
 def load_data():
-    data_dir = os.environ['SM_CHANNEL_TRAIN']
+    data_dir = 'data'
     with open(f"{data_dir}/lastfm_asia_features.json", "r") as f:
         features = json.load(f)
     target_df = pd.read_csv(f"{data_dir}/lastfm_asia_target.csv")
@@ -48,7 +48,7 @@ def main():
     trained_model = ray.get(future_model)
 
     # Save model
-    torch.save(trained_model.state_dict(), '/opt/ml/model/hetero_gnn_model.pth')
+    torch.save(trained_model.state_dict(), 'model/hetero_gnn_model.pth')
 
 if __name__ == "__main__":
     main()
