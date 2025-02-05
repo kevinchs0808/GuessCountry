@@ -1,0 +1,31 @@
+cluster_name: single-cluster-yaml
+
+provider:
+    type: aws
+    region: ap-southeast-1
+
+auth:
+    ssh_user: ubuntu
+
+head_node_type: ray.head.default
+
+available_node_types:
+  ray.head.default:
+    node_config:
+      InstanceType: m5.xlarge
+    resources: {"CPU": 1}  # Adjust based on instance type
+
+  ray.worker.default:
+    min_workers: 1
+    max_workers: 1
+    node_config:
+      InstanceType: m5.xlarge
+    resources: {"CPU": 1}  # Adjust based on instance type
+
+head_start_ray_commands:
+  - ray stop
+  - ray start --head --port=6379
+
+worker_start_ray_commands:
+  - ray stop
+  - ray start --address=$RAY_HEAD_IP:6379
