@@ -38,6 +38,8 @@ Here is the confusion matrix
 
 ![plot](./my_ray_gnn_bucket/result/confusion_matrix.jpg)
 
+In other words, we have about 20.65% accuracy on 1525 testing nodes.
+
 ## Reasoning on Model Result
 
 Based on the confusion matrix, it seems that the model is most capable of predicting correctly for the country (0, 6, 10, 17).
