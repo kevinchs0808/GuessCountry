@@ -209,8 +209,8 @@ This is  due to the **extremely imbalance proportion** of "CONNECTED" and "LIKED
 
 Here are the exact numbers:
 
-CONNECTED edges: 27806
-LIKED edges: 2925542 (~2.9 million)
+- CONNECTED edges: 27806
+- LIKED edges: 2925542 (~2.9 million)
 
 There's about **100x** more LIKED edges than CONNECTED edges.
 
