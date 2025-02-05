@@ -193,7 +193,28 @@ Eventually, you will see the following result:
 
 ![plot](./images/GNN_Result.png)
 
-As you can see, the model training is done within 5 minutes.
+As you can see, the model training is done within **5 minutes**.
+
+### Result of Parallelization
+
+I've run some experiment by using only 1 cpu on the Ray cluster to check whether the Parallelization stage has been effective. Unfortunately, seems like the difference in training time is only **5 seconds**. 
+
+### Reason on Ineffective Parallelization
+
+This is  due to the **extremely imbalance proportion** of "CONNECTED" and "LIKED" edges ratio.
+
+![plot](./images/edge_comparison.jpg)
+
+Here are the exact numbers:
+
+CONNECTED edges: 27806
+LIKED edges: 2925542 (~2.9 million)
+
+There's about **100x** more LIKED edges than CONNECTED edges.
+
+Hence during parallelization, it's very unlikely to achieve 50% reduction in training time considering this information.
+
+But, the reason why this was a good start for parallelization is because we have two independent set of edges ("CONNECTION" & "LIKED"), and hence inter-worker communication can be minimized (reduced network latency).
 
 ## Next Step
 
